@@ -70,4 +70,69 @@ You can replace the values in 16'hXXXX format to simulate different input matric
                             2: bram_input_data <= 16'h9th;
                             3: bram_input_data <= 16'h10th;
                             4: bram_input_data <= 16'h1st;
-                          
+
+
+
+How to Use This Project
+------------------------
+
+1. *Download & Import*:
+   - Clone or download this repository.
+   - Open Vivado and create a new project.
+   - Add all provided .sv and .xdc files to the Vivado project.
+
+2. *Synthesis and Implementation*:
+   - Set top_module.sv as the top module.
+   - Synthesize and implement the design.
+   - Generate the bitstream.
+
+3. *Programming FPGA*:
+   - Connect your FPGA development board.
+   - Use Vivado Hardware Manager to program the bitstream.
+
+4. *Running the Design*:
+   - Once programmed, the output of the convolution will appear on the 7-segment display.
+   - Use the provided button controls to navigate through the result stream.
+
+5. *Simulation*:
+   - You can simulate individual modules using Vivado’s simulation tools.
+   - For example, instantiate process_engine_array.sv in a testbench to verify convolution behavior.
+
+6. *Hexadecimal Input for Testing*:
+   - Inputs and weights can be manually defined in hexadecimal format (e.g., 16'h000A) in the testbenches.
+   - Refer to the syntax used in process_engine_array.sv for population.
+
+Module Descriptions
+-------------------
+
+- *bram.sv*:
+  - Block RAM storage for input data and intermediate results.
+
+- *decompressor.sv*:
+  - Decompresses encoded data into usable input format for convolution.
+
+- *adder.sv*:
+  - Performs element-wise 16-bit addition.
+
+- *multiplier.sv*:
+  - Performs 16-bit multiplication for convolution kernel computations.
+
+- *process_engine.sv*:
+  - Takes a window of inputs and weights, computes a single convolution result (dot product).
+
+- *process_engine_array.sv*:
+  - Arranges multiple process_engine units in a pipelined array structure.
+  - Adds support for multiple depth layers and enables chaining of outputs.
+
+- *relu.sv*:
+  - Applies Rectified Linear Unit (ReLU) function (outputs 0 if input < 0).
+
+- *seven_segment_display.sv*:
+  - Displays output results on a 7-segment display.
+  - Controlled via buttons to view each output sequentially.
+
+- *compressor.sv*:
+  - Reduces output bit-width or combines results for I/O optimization.
+
+- *top_module.sv*:
+  - Integrates all submodules and serves as the main entry point for synthesis and FPGA execution.
