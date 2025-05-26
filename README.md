@@ -57,11 +57,11 @@ Refer to the syntax used in the process_engine_array module. For instance:
 You can replace the values in 16'hXXXX format to simulate different input matrices or kernel configurations.
 
 !!!!!IMPORTANT!!!!!: When populating one of the BRAMs, write the first value to the last place. And then write other values from 0th index to last_index-1 sequentally. So, at the end values must be look like this:                       
-                            0: bram_input_data <= 16'h4100;
-                            1: bram_input_data <= 16'2nd;
-                            2: bram_input_data <= 16'3th;
-                            3: bram_input_data <= 16'h4th;
-                            4: bram_input_data <= 16'h5th;
+                            0: bram_input_data <= 16'h6th;
+                            1: bram_input_data <= 16'h7th;
+                            2: bram_input_data <= 16'h8th;
+                            3: bram_input_data <= 16'h9th;
+                            4: bram_input_data <= 16'h1st;
 
                             0: bram_input_data <= 16'h6th;
                             1: bram_input_data <= 16'h7th;
